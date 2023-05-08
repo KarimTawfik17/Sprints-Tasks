@@ -21,8 +21,8 @@
 | _3.5 Database Integration_                     | 100   |
 |                                                | 1700  |
 | **4. Testing**                                 |       |
-| _4.1 Unit Testing _                            | 200   |
-| _4.2 Full-app Testing _                        | 160   |
+| _4.1 Unit Testing_                             | 200   |
+| _4.2 Full-app Testing_                         | 160   |
 |                                                | 360   |
 | **5. Deployment**                              |       |
 | _5.1 Review the application with the customer_ | 80    |
