@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Task</title>
+  </head>
+  <body>
+    <form action="post">
+      <fieldset>
+        <legend>Personal Data</legend>
+        <fieldset>
+          <legend>Your Name</legend>
+          <div>
+            <label for="first-name">First Name</label
+            ><input placeholder="ex. Karim" type="text" />
+          </div>
+          <div>
+            <label for="last-name">Last Name</label
+            ><input placeholder="ex. Tawfik" type="text" />
+          </div>
+        </fieldset>
+        <div><label for="phone">Your Phone</label><input type="tel" /></div>
+        <div><label for="email">Email</label><input type="email" /></div>
+        <div>
+          <label for="password">Password</label><input type="password" />
+        </div>
+        <div>
+          <label for="re-password">Password</label><input type="password" />
+        </div>
+        <div>
+          <input type="radio" name="gender" id="male" />
+          <label for="male">Male</label>
+        </div>
+        <div>
+          <input type="radio" name="gender" id="female" />
+          <label for="female">Female</label>
+        </div>
+        <div>
+          <input type="checkbox" name="employ" id="student" />
+          <label for="student">Student</label>
+        </div>
+        <div>
+          <input type="checkbox" name="employ" id="grad" />
+          <label for="grad">Graduated</label>
+        </div>
+        <div>
+          <label for="university">University</label>
+          <select id="university">
+            <option value="auc">AUC</option>
+            <option value="auc">AUC</option>
+            <option value="auc">AUC</option>
+          </select>
+        </div>
+      </fieldset>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
