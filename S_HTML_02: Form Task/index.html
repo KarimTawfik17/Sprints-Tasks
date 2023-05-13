@@ -6,29 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form Task</title>
   </head>
-  <body>
-    <form action="post">
-      <fieldset>
-        <legend>Personal Data</legend>
-        <fieldset>
-          <legend>Your Name</legend>
-          <div>
-            <label for="first-name">First Name</label
-            ><input placeholder="ex. Karim" type="text" />
-          </div>
-          <div>
-            <label for="last-name">Last Name</label
-            ><input placeholder="ex. Tawfik" type="text" />
-          </div>
+  <body bgcolor="#2f4f4f">
+    <form action="/" method="post">
+      <fieldset style="background-color: #2e6e6e">
+        <legend style="background-color: #5f9ea0">Personal Data</legend>
+        <br />
+        <fieldset style="background-color: #5f9ea0">
+          <legend style="background-color: #3e858b; line-height: 4">
+            Your Name
+          </legend>
+          <table>
+            <tr>
+              <td><label for="first-name">First Name</label></td>
+              <td>: <input placeholder="ex. Karim" type="text" /></td>
+            </tr>
+            <tr>
+              <td><label for="last-name">Last Name</label></td>
+              <td>: <input placeholder="ex. Tawfik" type="text" /></td>
+            </tr>
+          </table>
         </fieldset>
-        <div><label for="phone">Your Phone</label><input type="tel" /></div>
-        <div><label for="email">Email</label><input type="email" /></div>
-        <div>
-          <label for="password">Password</label><input type="password" />
-        </div>
-        <div>
-          <label for="re-password">Password</label><input type="password" />
-        </div>
+        <br />
+        <br />
+        <table>
+          <tr>
+            <td><label for="phone">Your Phone </label></td>
+            <td>: <input type="tel" /></td>
+          </tr>
+          <tr>
+            <td><label for="email">Email </label></td>
+            <td>: <input type="email" /></td>
+          </tr>
+          <tr>
+            <td><label for="password">Password </label></td>
+            <td>: <input type="password" /></td>
+          </tr>
+          <tr>
+            <td><label for="re-password">Password </label></td>
+            <td>: <input type="password" /></td>
+          </tr>
+        </table>
+        <br />
+
         <div>
           <input type="radio" name="gender" id="male" />
           <label for="male">Male</label>
@@ -37,6 +56,7 @@
           <input type="radio" name="gender" id="female" />
           <label for="female">Female</label>
         </div>
+        <br />
         <div>
           <input type="checkbox" name="employ" id="student" />
           <label for="student">Student</label>
@@ -45,16 +65,28 @@
           <input type="checkbox" name="employ" id="grad" />
           <label for="grad">Graduated</label>
         </div>
+        <br />
         <div>
-          <label for="university">University</label>
+          <label for="university">University : </label>
           <select id="university">
             <option value="auc">AUC</option>
             <option value="auc">AUC</option>
             <option value="auc">AUC</option>
           </select>
         </div>
+        <br />
+        <button
+          style="
+            color: white;
+            background-color: #343434;
+            border: none;
+            border-radius: 7px;
+          "
+          type="submit"
+        >
+          Submit
+        </button>
       </fieldset>
-      <button type="submit">Submit</button>
     </form>
   </body>
 </html>
