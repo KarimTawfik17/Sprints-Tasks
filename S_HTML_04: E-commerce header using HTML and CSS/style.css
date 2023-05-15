@@ -18,14 +18,17 @@ header {
   align-items: center;
   padding: 0 3rem;
 }
+nav a {
+  color: var(--anti-flash-white);
+  text-decoration: none;
+}
+nav a:hover {
+  color: var(--flax);
+}
 .drop-down,
 .info,
 nav li {
   padding: 1.2rem;
-}
-nav li:hover {
-  color: var(--flax);
-  cursor: pointer;
 }
 
 header button {
