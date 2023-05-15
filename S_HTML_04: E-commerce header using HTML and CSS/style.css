@@ -8,18 +8,55 @@
   --charcoal: hsl(206, 12%, 27%);
   --flax: hsl(47, 120%, 70%);
   --anti-flash-white: hsl(240, 6%, 93%);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 header {
   background-color: var(--charcoal);
   color: var(--anti-flash-white);
+  display: flex;
+  align-items: center;
+  padding: 0 3rem;
+}
+.drop-down,
+.info,
+nav li {
+  padding: 1.2rem;
 }
 
 header button {
   color: var(--flax);
   background: none;
   border: none;
+  font-family: inherit;
+  font-weight: 600;
 }
-header .drop-down {
+.drop-down {
   color: var(--charcoal);
   background-color: var(--flax);
+  width: 17%;
+  text-align: left;
+  display: flex;
+  align-items: center;
+}
+.drop-down span {
+  margin-left: 1rem;
+  margin-right: auto;
+}
+
+header ul {
+  list-style: none;
+  display: flex;
+}
+
+nav {
+  margin-left: 1rem;
+  margin-right: auto;
+}
+
+.count {
+  border-radius: 50%;
+  padding: 0 5px;
+
+  border: 1px solid;
 }
