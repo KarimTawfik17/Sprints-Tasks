@@ -3,3 +3,18 @@
   margin: 0;
   padding: 0;
 }
+
+:root {
+  --charcoal: hsl(206, 12%, 27%);
+  --flax: hsl(47, 120%, 70%);
+  --anti-flash-white: hsl(240, 6%, 93%);
+}
+header {
+  background-color: var(--charcoal);
+  color: var(--anti-flash-white);
+}
+
+header button {
+  background-color: var(--flax);
+  color: var(--charcoal);
+}
