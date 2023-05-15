@@ -23,6 +23,10 @@ header {
 nav li {
   padding: 1.2rem;
 }
+nav li:hover {
+  color: var(--flax);
+  cursor: pointer;
+}
 
 header button {
   color: var(--flax);
@@ -31,6 +35,10 @@ header button {
   font-family: inherit;
   font-weight: 600;
 }
+header button:hover {
+  cursor: pointer;
+}
+
 .drop-down {
   color: var(--charcoal);
   background-color: var(--flax);
