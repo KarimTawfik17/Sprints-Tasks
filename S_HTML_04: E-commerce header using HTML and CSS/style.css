@@ -15,6 +15,11 @@ header {
 }
 
 header button {
-  background-color: var(--flax);
+  color: var(--flax);
+  background: none;
+  border: none;
+}
+header .drop-down {
   color: var(--charcoal);
+  background-color: var(--flax);
 }
