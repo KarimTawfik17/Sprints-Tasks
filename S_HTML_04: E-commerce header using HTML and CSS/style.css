@@ -16,6 +16,7 @@ header {
   color: var(--anti-flash-white);
   display: flex;
   align-items: center;
+  line-height: 1.4;
   padding: 0 3rem;
 }
 nav a {
@@ -49,6 +50,7 @@ header button:hover {
   text-align: left;
   display: flex;
   align-items: center;
+  align-self: stretch;
 }
 .drop-down span {
   margin-left: 1rem;
@@ -68,6 +70,5 @@ nav {
 .count {
   border-radius: 50%;
   padding: 0 5px;
-
   border: 1px solid;
 }
