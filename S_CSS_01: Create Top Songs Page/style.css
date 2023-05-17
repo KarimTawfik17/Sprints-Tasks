@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   text-align: center;
-  list-style: decimal;
+  list-style: none;
   font-family: "Archivo", sans-serif;
   color: inherit;
 }
@@ -34,6 +34,17 @@ button:hover {
 ol {
   border: 2px solid;
   border-radius: 5px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1rem 2rem;
+  justify-content: flex-end;
+  gap: 2rem 0;
+}
+ol li {
+  text-align: left;
+
+  flex-basis: 50%;
 }
 a {
   text-decoration: none;
@@ -60,4 +71,15 @@ p {
   line-height: 1.8;
   font-weight: 300;
   text-transform: uppercase;
+}
+
+.container {
+  width: 80%;
+  height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }
