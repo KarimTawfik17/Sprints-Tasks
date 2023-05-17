@@ -5,4 +5,21 @@
   text-align: center;
   list-style: decimal;
   font-family: "Archivo", sans-serif;
+  color: inherit;
+}
+:root {
+  --bg-color: #64007e;
+  --bg2-color: #bb00fc;
+  --fg-color: #efefef;
+}
+body {
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+}
+button {
+  background-color: var(--fg-color);
+  color: var(--bg-color);
+}
+a span {
+  background-color: var(--bg2-color);
 }
