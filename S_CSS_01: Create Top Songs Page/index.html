@@ -28,8 +28,8 @@
         voluptate facilis id laudantium. Eaque nesciunt consequuntur labore
         porro, officia aliquam.
       </p>
-      <button>Show me!</button>
-      <ol>
+      <button id="btn">Show me!</button>
+      <ol id="songs" class="removed">
         <li>
           <a href="#"><span>#1</span>Time to Pretend</a>
         </li>
@@ -68,5 +68,14 @@
         </li>
       </ol>
     </div>
+    <script>
+      const btn = document.getElementById("btn");
+      const songs = document.getElementById("songs");
+      btn.onclick = () => {
+        const shown = songs.classList.toggle("removed");
+        if (shown) btn.innerText = "Show me!";
+        else btn.innerText = "Hide me!";
+      };
+    </script>
   </body>
 </html>
