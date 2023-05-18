@@ -40,6 +40,9 @@ ol {
   padding: 1rem 2rem;
   justify-content: flex-end;
   gap: 2rem 0;
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s ease;
 }
 ol li {
   text-align: left;
@@ -85,5 +88,6 @@ p {
 }
 
 .removed {
-  display: none;
+  opacity: 0;
+  transform: translateY(-30px);
 }
