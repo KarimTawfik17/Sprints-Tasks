@@ -12,3 +12,16 @@
 .secondary-nav {
   display: none;
 }
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown .menu {
+  display: none;
+  position: absolute;
+}
+
+.dropdown button:hover + .menu {
+  display: block;
+}
