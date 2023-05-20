@@ -52,3 +52,23 @@
 .main-header > * {
   margin: 1rem 0;
 }
+
+@media screen and (min-width: 992px) {
+  body {
+    background-color: beige;
+  }
+  .extra-header,
+  .secondary-nav,
+  .categories {
+    display: block;
+  }
+  .secondary-header .primary-actions,
+  .main-header h1,
+  .main-header .bars {
+    display: none;
+  }
+  .main-header .primary-actions,
+  .main-header .primary-nav {
+    display: flex;
+  }
+}
