@@ -9,6 +9,10 @@
   text-decoration: none;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
 .extra-header,
 .categories,
 .secondary-nav,
@@ -24,6 +28,7 @@
 .dropdown .menu {
   display: none;
   position: absolute;
+  z-index: 1;
 }
 
 .dropdown button:hover + .menu {
@@ -41,12 +46,12 @@ nav ul {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin: 1rem;
+  margin-left: 1rem;
 }
 .secondary-header {
   justify-content: center;
   align-items: center;
-  padding: 0 1rem;
+  padding: 0.25rem 1rem;
   display: flex;
   color: #3d464d;
   background-color: #f5f5f5;
@@ -220,10 +225,10 @@ h1 span:last-child {
 .primary-actions i {
   cursor: pointer;
   color: #ffd333;
+  margin-left: 10px;
 }
 
 .primary-actions span {
-  margin-right: 10px;
   width: 25px;
   height: 25px;
   line-height: 25px;
@@ -259,5 +264,12 @@ h1 span:last-child {
   }
   .extra-header {
     display: flex;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  [class*="header"] {
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
 }
