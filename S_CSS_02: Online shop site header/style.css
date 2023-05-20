@@ -66,6 +66,7 @@ nav ul {
 .main-header {
   display: flex;
   padding: 0 1rem;
+  position: relative;
   align-items: center;
   justify-content: flex-start;
   background-color: #3d464d;
@@ -114,6 +115,7 @@ form button {
 }
 form input {
   min-width: 300px;
+  width: 35vw;
 }
 h1 {
   font-size: 2.1rem;
@@ -132,6 +134,13 @@ h1 span:last-child {
   background-color: #ffd333;
   color: #3d464d;
 }
+.main-header h1 span:first-child {
+  background-color: white;
+  color: #3d464d;
+}
+.main-header h1 span:last-child {
+  color: white;
+}
 .secondary-header .secondary-actions button {
   background-color: white;
   border: none;
@@ -140,6 +149,93 @@ h1 span:last-child {
 }
 .secondary-header .secondary-actions button:hover {
   background-color: #e6e6e6;
+}
+
+.bars {
+  color: #999999;
+  padding: 1rem;
+  border: 1px dotted;
+  position: static;
+}
+.bars button {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+.bars .menu {
+  /* display: block; */
+  left: 0;
+  top: 100%;
+  padding: 1rem;
+  width: 100%;
+  background-color: #3d464d;
+}
+.bars ul {
+  flex-direction: column;
+  color: white;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.bars li:hover {
+  color: #ffd333;
+}
+
+.categories {
+  margin-right: 2rem;
+}
+.categories button {
+  background-color: #ffd333;
+  border: 0;
+  padding: 1.5rem;
+  display: flex;
+  cursor: pointer;
+  min-width: 25vw;
+  align-items: center;
+  gap: 0.75rem;
+  margin: -1rem 0 -1rem 0;
+}
+
+.categories .menu {
+  /* display: block; */
+  background-color: white;
+  width: 100%;
+  padding-left: 1.5rem;
+  padding-bottom: 1rem;
+}
+.categories .menu li {
+  margin-top: 1rem;
+  color: #999999;
+}
+
+.categories button :last-child {
+  margin-left: auto;
+}
+.primary-nav {
+  color: white;
+}
+.primary-nav li:hover {
+  color: #ffd333;
+}
+
+.primary-actions i {
+  cursor: pointer;
+  color: #ffd333;
+}
+
+.primary-actions span {
+  margin-right: 10px;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  display: inline-block;
+  text-align: center;
+  color: white;
+  border: 1px solid;
+  border-radius: 100%;
+  /* padding: 5px 10px; */
+}
+.secondary-header .primary-actions * {
+  color: #3d464d;
 }
 @media screen and (min-width: 992px) {
   body {
