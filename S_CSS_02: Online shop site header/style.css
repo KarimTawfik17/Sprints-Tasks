@@ -6,3 +6,9 @@
   font: inherit;
   color: inherit;
 }
+
+.extra-header,
+.categories,
+.secondary-nav {
+  display: none;
+}
