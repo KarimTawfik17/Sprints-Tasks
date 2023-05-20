@@ -9,7 +9,8 @@
 
 .extra-header,
 .categories,
-.secondary-nav {
+.secondary-nav,
+.primary-nav {
   display: none;
 }
 
