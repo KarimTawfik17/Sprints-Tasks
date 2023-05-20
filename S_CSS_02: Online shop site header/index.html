@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/fe34ab1e83.js"
+      crossorigin="anonymous"
+    ></script>
     <title>Multi Shop</title>
   </head>
   <body>
@@ -20,24 +24,14 @@
         </nav>
         <div class="secondary-actions">
           <div class="dropdown">
-            <button>My Account</button>
+            <button>My Account <i class="fa-solid fa-angle-down"></i></button>
             <ul class="menu">
               <li><a href="#">Sign In</a></li>
               <li><a href="#">Sign Up</a></li>
             </ul>
           </div>
-          <div class="primary-actions">
-            <div class="like">
-              <span>heart</span>
-              <span>0</span>
-            </div>
-            <div class="cart">
-              <span>cart</span>
-              <span>0</span>
-            </div>
-          </div>
           <div class="dropdown">
-            <button>USD</button>
+            <button>USD <i class="fa-solid fa-angle-down"></i></button>
             <ul>
               <li>EUR</li>
               <li>GBP</li>
@@ -45,7 +39,7 @@
             </ul>
           </div>
           <div class="dropdown">
-            <button>EN</button>
+            <button>EN <i class="fa-solid fa-angle-down"></i></button>
             <ul>
               <li>FR</li>
               <li>AR</li>
@@ -53,15 +47,27 @@
             </ul>
           </div>
         </div>
+        <div class="primary-actions">
+          <div class="like">
+            <span>heart</span>
+            <span>0</span>
+          </div>
+          <div class="cart">
+            <span>cart</span>
+            <span>0</span>
+          </div>
+        </div>
       </section>
 
       <section class="extra-header">
         <h1>Multi Shop</h1>
-        <form action="/">
+        <form action="#">
           <input type="text" />
-          <button type="submit">search</button>
+          <button type="submit">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
         </form>
-        <a class="contact">
+        <a class="contact" href="tel:011">
           <span>Customer Service</span>
           <span>+012 345 6789</span>
         </a>
@@ -69,7 +75,11 @@
       <section class="main-header">
         <h1>Multi Shop</h1>
         <div class="dropdown">
-          <button>Categories</button>
+          <button>
+            <i class="fa-solid fa-bars"></i>
+            <span>Categories</span>
+            <i class="fa-solid fa-angle-down"></i>
+          </button>
           <ul>
             <li>category 1</li>
             <li>category 2</li>
@@ -85,22 +95,22 @@
             <li>Home</li>
             <li>Shop</li>
             <li>Shop Detail</li>
-            <li>Pages</li>
+            <li>Pages <i class="fa-solid fa-angle-down"></i></li>
             <li>Contact</li>
           </ul>
         </nav>
         <div class="primary-actions">
           <div class="like">
-            <span>heart</span>
+            <i class="fa-solid fa-heart"></i>
             <span>0</span>
           </div>
           <div class="cart">
-            <span>cart</span>
+            <i class="fa-solid fa-cart-shopping"></i>
             <span>0</span>
           </div>
         </div>
         <div class="dropdown">
-          <button>bars</button>
+          <button><i class="fa-solid fa-bars"></i></button>
           <nav class="menu">
             <ul>
               <li>Home</li>
