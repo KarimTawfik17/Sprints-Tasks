@@ -5,6 +5,8 @@
   list-style: none;
   font: inherit;
   color: inherit;
+  font-family: sans-serif;
+  text-decoration: none;
 }
 
 .extra-header,
@@ -80,7 +82,55 @@ nav ul {
   justify-content: space-between;
   background-color: white;
   align-items: center;
-  padding: 0 1rem;
+  padding: 1rem 1rem;
+}
+.extra-header .contact span {
+  display: block;
+  text-align: right;
+}
+.extra-header .contact span:first-child {
+  color: rgb(108, 117, 125);
+  margin-bottom: 0.25rem;
+}
+.extra-header .contact span:last-child {
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #3d464d;
+}
+.extra-header form {
+  display: flex;
+  background-color: transparent;
+}
+form > * {
+  padding: 0.7rem;
+  border-radius: 0;
+  background-color: transparent;
+  color: #999999;
+  border: 1px solid #999999;
+}
+form button {
+  color: #ffd333;
+  border-left: none;
+}
+form input {
+  min-width: 300px;
+}
+h1 {
+  font-size: 2.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+h1 span:first-child {
+  background-color: #3d464d;
+  color: #ffd333;
+  padding: 0.5rem 0.5rem 0.25rem 0.5rem;
+  display: inline-block;
+}
+
+h1 span:last-child {
+  padding: 0.5rem 0.5rem 0.25rem 0.5rem;
+  background-color: #ffd333;
+  color: #3d464d;
 }
 .secondary-header .secondary-actions button {
   background-color: white;
