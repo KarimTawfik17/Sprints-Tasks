@@ -1,3 +1,7 @@
+:root {
+  --padding-inline-page: 1rem;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -14,6 +18,11 @@ img {
 
 a:hover {
   text-decoration: underline;
+}
+
+[class*="header"],
+.hero {
+  padding-inline: var(--padding-inline-page);
 }
 
 .extra-header,
@@ -54,7 +63,7 @@ nav ul {
 .secondary-header {
   justify-content: center;
   align-items: center;
-  padding: 0.25rem 1rem;
+  padding-block: 0.25rem;
   display: flex;
   color: #3d464d;
   background-color: #f5f5f5;
@@ -73,7 +82,6 @@ nav ul {
 
 .main-header {
   display: flex;
-  padding: 0 1rem;
   position: relative;
   align-items: center;
   justify-content: flex-start;
@@ -91,7 +99,7 @@ nav ul {
   justify-content: space-between;
   background-color: white;
   align-items: center;
-  padding: 1rem 1rem;
+  padding-block: 1rem;
 }
 .extra-header .contact span {
   display: block;
@@ -171,7 +179,6 @@ h1 span:last-child {
   background-color: transparent;
 }
 .bars .menu {
-  /* display: block; */
   left: 0;
   top: 100%;
   padding: 1rem;
@@ -204,7 +211,6 @@ h1 span:last-child {
 }
 
 .categories .menu {
-  /* display: block; */
   background-color: white;
   width: 100%;
   padding-left: 1.5rem;
@@ -240,7 +246,6 @@ h1 span:last-child {
   color: white;
   border: 1px solid;
   border-radius: 100%;
-  /* padding: 5px 10px; */
 }
 .secondary-header .primary-actions * {
   color: #3d464d;
@@ -271,8 +276,7 @@ h1 span:last-child {
 }
 
 @media screen and (min-width: 1200px) {
-  [class*="header"] {
-    padding-left: 4rem;
-    padding-right: 4rem;
+  :root {
+    --padding-inline-page: 4rem;
   }
 }
