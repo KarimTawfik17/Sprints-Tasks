@@ -250,6 +250,45 @@ h1 span:last-child {
 .secondary-header .primary-actions * {
   color: #3d464d;
 }
+
+/* hero section styling */
+
+.hero {
+  padding-block: 1.5rem;
+  display: grid;
+  gap: 1.5rem;
+}
+.hero img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.hero .carousel,
+.hero .offer {
+  position: relative;
+}
+.hero .text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.carousel {
+  height: calc(400px + 1.5rem);
+}
+.offer {
+  height: 200px;
+}
+
 @media screen and (min-width: 992px) {
   body {
     background-color: beige;
@@ -272,6 +311,15 @@ h1 span:last-child {
   }
   .extra-header {
     display: flex;
+  }
+
+  /* hero styles here */
+  .hero {
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  .carousel {
+    grid-row: 1/3;
   }
 }
 
