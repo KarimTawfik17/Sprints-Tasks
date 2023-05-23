@@ -257,6 +257,7 @@ h1 span:last-child {
   padding-block: 1.5rem;
   display: grid;
   gap: 1.5rem;
+  line-height: 1.6;
 }
 .hero img {
   height: 100%;
@@ -288,10 +289,33 @@ h1 span:last-child {
 .offer {
   height: 200px;
 }
+.hero p {
+  padding-inline: 20%;
+  font-size: large;
+}
 
+.hero h2 {
+  font-size: 3rem;
+  font-weight: 500;
+}
+.hero h3 {
+  font-size: 2rem;
+  font-weight: 400;
+}
+.button {
+  background: none;
+  border: 1px solid;
+  cursor: pointer;
+  padding: 0.7rem 2rem;
+}
+.primary-button {
+  background-color: #ffd333;
+  color: #3d464d;
+  padding: 0.5rem 1rem;
+}
 @media screen and (min-width: 992px) {
   body {
-    background-color: beige;
+    background-color: #e6e6e6;
   }
   .secondary-nav,
   .categories {
