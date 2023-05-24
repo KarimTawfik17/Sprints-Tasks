@@ -402,8 +402,25 @@ h1 span:last-child {
   padding-block: 1rem;
   padding-inline: var(--padding-inline-page);
 }
-.categories-section > .container > div {
+.cat {
   background-color: white;
+  display: flex;
+  border-radius: 2px;
+  align-items: center;
+}
+.cat img {
+  width: 100px;
+  height: 100px;
+  margin-right: 1rem;
+}
+.cat h3 {
+  font-size: medium;
+  color: #3d464d;
+  margin-bottom: 1rem;
+}
+.cat p {
+  color: #999999;
+  font-size: small;
 }
 .section-heading {
   font-size: x-large;
