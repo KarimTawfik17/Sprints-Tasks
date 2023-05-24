@@ -322,6 +322,9 @@ h1 span:last-child {
 .hero img {
   height: 100%;
   width: 100%;
+}
+img {
+  transition: transform 0.5s;
   object-fit: cover;
 }
 .hero .carousel,
@@ -346,8 +349,17 @@ h1 span:last-child {
 .carousel {
   height: calc(400px + 1.5rem);
 }
-.offer {
+.offer .img {
   height: 200px;
+}
+.img {
+  overflow: hidden;
+}
+:hover > .img > img {
+  transform: scale(1.3) rotate(3deg);
+}
+.product:hover > .img > img {
+  transform: scale(1.3);
 }
 .hero p {
   padding-inline: 20%;
@@ -407,11 +419,19 @@ h1 span:last-child {
   display: flex;
   border-radius: 2px;
   align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.cat:hover {
+  background-color: #ffd333;
 }
 .cat img {
   width: 100px;
   height: 100px;
+}
+.cat .img {
   margin-right: 1rem;
+  height: 100px;
 }
 .cat h3 {
   font-size: medium;
@@ -452,6 +472,10 @@ h1 span:last-child {
   margin: 1rem;
   font-weight: bold;
   color: #3d464d;
+}
+.product a:hover {
+  text-decoration: none;
+  color: #ffd333;
 }
 .prices .new {
   font-size: 1.25rem;
