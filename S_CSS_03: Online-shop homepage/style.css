@@ -398,12 +398,22 @@ h1 span:last-child {
 
 /* category section styling */
 .categories-section {
+  margin-top: 2rem;
+  padding-block: 1rem;
   padding-inline: var(--padding-inline-page);
 }
 .categories-section > .container > div {
   background-color: white;
 }
-
+/* products section styling */
+.featured-products {
+  margin-block: 2rem;
+  padding-block: 1rem;
+  padding-inline: var(--padding-inline-page);
+}
+.product {
+  background-color: white;
+}
 @media screen and (min-width: 992px) {
   .secondary-nav,
   .categories {
