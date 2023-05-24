@@ -20,7 +20,7 @@ img {
 }
 
 /* define grid system */
-.container ::after {
+.container::after {
   content: "";
   display: block;
   clear: both;
@@ -394,6 +394,14 @@ h1 span:last-child {
 .feature i {
   margin-right: 0.75rem;
   color: #ffd333;
+}
+
+/* category section styling */
+.categories-section {
+  padding-inline: var(--padding-inline-page);
+}
+.categories-section > .container > div {
+  background-color: white;
 }
 
 @media screen and (min-width: 992px) {
