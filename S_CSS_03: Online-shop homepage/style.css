@@ -380,6 +380,7 @@ h1 span:last-child {
   padding-inline: var(--padding-inline-page);
 }
 .feature {
+  margin-bottom: 30px;
   line-height: 1.5;
   border-radius: 2px;
   background-color: white;
@@ -387,6 +388,8 @@ h1 span:last-child {
   font-size: larger;
   font-weight: bold;
   color: #3d464d;
+  display: flex;
+  align-items: center;
 }
 .feature i {
   margin-right: 0.75rem;
