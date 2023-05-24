@@ -445,6 +445,36 @@ h1 span:last-child {
 }
 .product {
   background-color: white;
+  border-radius: 2px;
+  text-align: center;
+}
+.product h3 {
+  margin: 1rem;
+  font-weight: bold;
+  color: #3d464d;
+}
+.prices .new {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #3d464d;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+.prices .old {
+  color: #767676;
+  /* vertical-align: middle; */
+  text-decoration: line-through;
+}
+.rating {
+  margin-block: 1rem 1.5rem;
+}
+.stars {
+  color: #ffd333;
+}
+.count {
+  margin-left: 0.25rem;
+  color: #767676;
+  font-size: 0.85rem;
 }
 @media screen and (min-width: 992px) {
   .secondary-nav,
