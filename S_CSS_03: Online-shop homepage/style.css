@@ -379,11 +379,19 @@ img {
   border: 1px solid;
   cursor: pointer;
   padding: 0.7rem 2rem;
+  transition: background-color 0.3s, color 0.3s;
 }
 .primary-button {
   background-color: #ffd333;
   color: #3d464d;
   padding: 0.5rem 1rem;
+}
+.primary-button:hover {
+  background-color: #edba00;
+}
+.secondary-button:hover {
+  color: #3d464d;
+  background-color: white;
 }
 
 /* hero section styling */
