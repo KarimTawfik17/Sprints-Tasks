@@ -467,7 +467,59 @@ img {
   background-color: white;
   border-radius: 2px;
   text-align: center;
+  position: relative;
 }
+.product:hover .overlay {
+  opacity: 1;
+  z-index: auto;
+}
+.product:hover button {
+  transform: none;
+  opacity: 1;
+}
+.overlay {
+  z-index: -1;
+  display: flex;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: #ffffff88;
+  height: 310px;
+  opacity: 0;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  transition: all 1s;
+}
+.overlay button {
+  background-color: transparent;
+  border: 1px solid #3d464d;
+  padding: 0.75rem;
+  cursor: pointer;
+  color: #3d464d;
+  --transition-duration: 0.3s;
+  transition-property: background-color, color, opacity, transform;
+  transition-duration: var(--transition-duration);
+  opacity: 0;
+  transform: translateY(50px);
+}
+.overlay button:nth-child(2) {
+  transition-delay: 0s, 0s, calc(calc(var(--transition-duration) - 0.2s) * 1),
+    calc(calc(var(--transition-duration) - 0.2s) * 1);
+}
+.overlay button:nth-child(3) {
+  transition-delay: 0s, 0s, calc(calc(var(--transition-duration) - 0.2s) * 2),
+    calc(calc(var(--transition-duration) - 0.2s) * 2);
+}
+.overlay button:nth-child(4) {
+  transition-delay: 0s, 0s, calc(calc(var(--transition-duration) - 0.2s) * 3),
+    calc(calc(var(--transition-duration) - 0.2s) * 3);
+}
+.overlay button:hover {
+  background-color: #3d464d;
+  color: #ffd333;
+}
+
 .product h3 {
   margin: 1rem;
   font-weight: bold;
@@ -486,7 +538,6 @@ img {
 }
 .prices .old {
   color: #767676;
-  /* vertical-align: middle; */
   text-decoration: line-through;
 }
 .rating {
