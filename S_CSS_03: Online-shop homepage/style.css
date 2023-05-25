@@ -25,10 +25,18 @@ img {
   display: block;
   clear: both;
 }
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
 [class*="col"] {
   width: 100%;
   float: left;
   margin-bottom: 30px;
+}
+.flex-container [class*="col"] {
+  flex-basis: 100%;
 }
 
 @media screen and (min-width: 575px) {
@@ -47,6 +55,9 @@ img {
   }
   .col-1-1-2-4:nth-child(2n + 1) {
     margin-left: 0;
+  }
+  .flex-container .col-1-1-2-4 {
+    flex-basis: auto;
   }
 
   .col-1-2-3-4 {
