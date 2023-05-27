@@ -58,7 +58,8 @@
           parseFloat(num1.value),
           parseFloat(num2.value)
         );
-        result.innerText = isNaN(answer) ? "N/A" : answer;
+        // coercing string to number again will remove trailing zeros
+        result.innerText = isNaN(answer) ? "N/A" : Number(answer.toFixed(2)); // to fixed returns string
       }
       calc();
     </script>
