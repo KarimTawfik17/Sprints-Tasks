@@ -21,21 +21,46 @@
   </head>
   <body>
     <div class="row">
-      <input id="num1" oninput="add()" type="number" class="column column-30" />
-      <div class="column column-10">+</div>
-      <input id="num2" oninput="add()" type="number" class="column column-30" />
+      <input
+        id="num1"
+        oninput="calc()"
+        type="number"
+        class="column column-30"
+      />
+      <select id="operator" class="column column-10" onchange="calc()">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">x</option>
+        <option value="/">&divide;</option>
+      </select>
+      <input
+        id="num2"
+        oninput="calc()"
+        type="number"
+        class="column column-30"
+      />
       <span class="column column-10">=</span>
       <div id="result" class="column column-10"></div>
     </div>
     <script>
       const num1 = document.getElementById("num1");
       const num2 = document.getElementById("num2");
+      const operator = document.getElementById("operator");
       const result = document.getElementById("result");
-      function add() {
-        const answer = parseFloat(num1.value) + parseFloat(num2.value);
+      const calculations = {
+        "+": (a, b) => a + b,
+        "-": (a, b) => a - b,
+        "*": (a, b) => a * b,
+        "/": (a, b) => a / b,
+      };
+      function calc() {
+        const answer = calculations[operator.value](
+          parseFloat(num1.value),
+          parseFloat(num2.value)
+        );
         result.innerText = isNaN(answer) ? "N/A" : answer;
       }
-      add();
+      calc();
     </script>
   </body>
 </html>
