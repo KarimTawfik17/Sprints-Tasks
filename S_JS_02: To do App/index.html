@@ -4,11 +4,64 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+    <script
+      src="https://kit.fontawesome.com/fe34ab1e83.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="style.css" />
     <title>To-Do App</title>
   </head>
   <body>
-    <h1>To-Do App</h1>
+    <div class="container">
+      <h1>To-Do App</h1>
+      <form action="#" class="row">
+        <input type="text" class="column column-60" />
+        <input type="number" min="0" max="9" class="column column-10" />
+        <button class="column column-20">Add ToDo</button>
+      </form>
+    </div>
+    <table class="container">
+      <thead>
+        <tr>
+          <th>To Do</th>
+          <th>Priority</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>buy vegetables</td>
+          <td>3</td>
+          <td>
+            <button><i class="fa-solid fa-pen-to-square fa-xl"></i></button>
+            <button><i class="fa-solid fa-square-check fa-xl"></i></button>
+            <button><i class="fa-solid fa-trash fa-xl"></i></button>
+          </td>
+        </tr>
+        <tr>
+          <td>Add User</td>
+          <td>2</td>
+          <td>
+            <button><i class="fa-solid fa-pen-to-square fa-xl"></i></button>
+            <button><i class="fa-solid fa-square-check fa-xl"></i></button>
+            <button><i class="fa-solid fa-trash fa-xl"></i></button>
+          </td>
+        </tr>
+        <tr>
+          <td>Study algorithms</td>
+          <td>3</td>
+          <td>
+            <button><i class="fa-solid fa-pen-to-square fa-xl"></i></button>
+            <button><i class="fa-solid fa-square-check fa-xl"></i></button>
+            <button><i class="fa-solid fa-trash fa-xl"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <script src="main.js"></script>
   </body>
 </html>

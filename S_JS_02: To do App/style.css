@@ -3,3 +3,20 @@
   margin: 0;
   padding: 0;
 }
+h1 {
+  text-align: center;
+  margin: 3rem;
+}
+.row {
+  justify-content: space-between;
+}
+th:nth-child(1) {
+  width: 65%;
+}
+th:nth-child(2) {
+  width: 15%;
+}
+td button {
+  margin: 0 0.25rem;
+  padding: 0 1rem;
+}
