@@ -19,7 +19,12 @@
     <div class="container">
       <h1>To-Do App</h1>
       <form action="#" class="row">
-        <input name="title" type="text" class="column column-60" />
+        <input
+          name="title"
+          type="text"
+          minlength="1"
+          class="column column-60"
+        />
         <input
           name="priority"
           type="number"
@@ -38,32 +43,7 @@
           <th>Action</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>buy vegetables</td>
-          <td>3</td>
-          <td>
-            <button><i class="fa-solid fa-square-check fa-xl"></i></button>
-            <button><i class="fa-solid fa-trash fa-xl"></i></button>
-          </td>
-        </tr>
-        <tr>
-          <td>Add User</td>
-          <td>2</td>
-          <td>
-            <button><i class="fa-solid fa-square-check fa-xl"></i></button>
-            <button><i class="fa-solid fa-trash fa-xl"></i></button>
-          </td>
-        </tr>
-        <tr>
-          <td>Study algorithms</td>
-          <td>3</td>
-          <td>
-            <button><i class="fa-solid fa-square-check fa-xl"></i></button>
-            <button><i class="fa-solid fa-trash fa-xl"></i></button>
-          </td>
-        </tr>
-      </tbody>
+      <tbody></tbody>
     </table>
     <script src="main.js"></script>
   </body>
