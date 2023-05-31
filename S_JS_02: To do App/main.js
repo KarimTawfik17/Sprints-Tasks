@@ -36,17 +36,32 @@ function toggleTodo(id) {
   });
   render("toggle", index);
 }
+function editTodo(id, title, priority) {
+  let index1;
+  let index2;
+  const editedTodo = { id, title, priority };
+  todos = todos.map((todo, i) => {
+    if (todo.id == id) {
+      index1 = i;
+      return editedTodo;
+    }
+    return todo;
+  });
+  sortTodos();
+  index2 = todos.indexOf(editedTodo);
+  render("move", index1, index2);
+}
 function sortTodos() {
-  todos = todos.sort((a, b) => a.priority <= b.priority);
+  todos = todos.sort((a, b) => a.priority > b.priority);
 }
 
 function submitHandler(event) {
   event.preventDefault();
   let [title, priority] = extractData(event.target);
   [title, priority] = clean(title, priority);
-  if (!validate(title, priority)) {
-    return alert("Bad Input !!");
-  }
+  // if (!validate(title, priority)) {
+  //   return alert("Bad Input !!");
+  // }
   addTodo(title, priority);
   eraseForm(event.target);
 }
@@ -91,15 +106,18 @@ function createToDoUI(todo) {
 }
 
 const tableBody = document.querySelector("tbody");
-function render(hint, i) {
+function render(hint, i, ii) {
   if (hint == "add") {
     return addTodoUI(i);
   }
   if (hint == "remove") {
-    return removeTodoUI(i);
+    return reeditTodoUI(i);
   }
   if (hint == "toggle") {
     return toggleTodoUI(i);
+  }
+  if (hint == "move") {
+    return editTodoUI(i, ii);
   }
 }
 
@@ -113,7 +131,7 @@ function addTodoUI(index) {
     tableBody.children[index - 1].insertAdjacentElement("afterend", newTodo);
   }
 }
-function removeTodoUI(index) {
+function reeditTodoUI(index) {
   const removedTodo = tableBody.children[index];
   removedTodo.classList.add("remove");
   setTimeout(() => tableBody.removeChild(removedTodo), 400);
@@ -127,6 +145,49 @@ function toggleTodoUI(index) {
   }
   toggledTodo.classList.toggle(tilt);
   setTimeout(() => toggledTodo.classList.toggle(tilt), 400);
+}
+function editTodoUIContent(indexInUI, indexInData) {
+  tableBody.children[indexInUI].children[0].innerText =
+    todos[indexInData].title;
+  tableBody.children[indexInUI].children[1].innerText =
+    todos[indexInData].priority;
+}
+
+function editTodoUI(i1, i2) {
+  console.log(i1, i2);
+  editTodoUIContent(i1, i2);
+  if (i1 == i2) {
+    return;
+  }
+  let direction = "up";
+  let where = "beforebegin";
+  if (i2 > i1) {
+    direction = "down";
+    where = "afterend";
+  }
+  const todoUi = tableBody.children[i1];
+  const todoUiLoc = tableBody.children[i2];
+  tableBody.removeChild(todoUi);
+  todoUiLoc.insertAdjacentElement(where, todoUi);
+  console.log(i1 - i2, direction);
+  const diff = i1 - i2;
+  todoUi.style.setProperty("--diff", diff);
+  todoUi.classList.add("moving");
+
+  let startEl = tableBody.children[i2 + 1];
+  let endEl = tableBody.children[i1];
+
+  if (direction == "down") {
+    startEl = tableBody.children[i2 - 1];
+  }
+  startEl.classList.add("start");
+  endEl.classList.add("end");
+  setTimeout(() => {
+    todoUi.classList.remove("moving");
+    startEl.classList.remove("start");
+    endEl.classList.remove("end");
+    todoUi.style.removeProperty("--diff", diff);
+  }, 300);
 }
 
 const form = document.querySelector("form");

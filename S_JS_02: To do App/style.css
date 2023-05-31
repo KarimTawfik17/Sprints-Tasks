@@ -50,6 +50,27 @@ td button {
   animation: tilt-right 0.3s both;
 }
 
+.moving {
+  animation: move 0.3s both;
+}
+
+.start,
+.start ~ tr:not(.end ~ tr) {
+  animation: move 0.3s both;
+}
+.end,
+.end ~ tr:not(.start ~ tr) {
+  animation: move2 0.3s both;
+}
+@keyframes move2 {
+  from {
+    transform: translateY(63px);
+  }
+  to {
+    transform: none;
+  }
+}
+
 @keyframes appear {
   from {
     opacity: 0;
@@ -62,7 +83,7 @@ td button {
 }
 @keyframes move {
   from {
-    transform: translateY(-63px);
+    transform: translateY(calc(var(--diff, -1) * 63px));
   }
   to {
     transform: none;
