@@ -95,22 +95,38 @@ function render(hint, i) {
   if (hint == "add") {
     return addTodoUI(i);
   }
-  console.log(hint, i);
-  tableBody.innerHTML = "";
-  const fragment = document.createDocumentFragment();
-  todos.forEach((todo) => fragment.appendChild(createToDoUI(todo)));
-  tableBody.appendChild(fragment);
+  if (hint == "remove") {
+    return removeTodoUI(i);
+  }
+  if (hint == "toggle") {
+    return toggleTodoUI(i);
+  }
 }
 
 function addTodoUI(index) {
   const newTodo = createToDoUI(todos[index]);
   newTodo.classList.toggle("show");
-  setTimeout(() => newTodo.classList.toggle("show"), 4000);
+  setTimeout(() => newTodo.classList.toggle("show"), 400);
   if (index === 0) {
     tableBody.insertAdjacentElement("afterbegin", newTodo);
   } else {
     tableBody.children[index - 1].insertAdjacentElement("afterend", newTodo);
   }
+}
+function removeTodoUI(index) {
+  const removedTodo = tableBody.children[index];
+  removedTodo.classList.add("remove");
+  setTimeout(() => tableBody.removeChild(removedTodo), 400);
+}
+function toggleTodoUI(index) {
+  const toggledTodo = tableBody.children[index];
+  toggledTodo.classList.toggle("completed");
+  let tilt = "tilt-right";
+  if (todos[index].completed) {
+    tilt = "tilt-left";
+  }
+  toggledTodo.classList.toggle(tilt);
+  setTimeout(() => toggledTodo.classList.toggle(tilt), 400);
 }
 
 const form = document.querySelector("form");

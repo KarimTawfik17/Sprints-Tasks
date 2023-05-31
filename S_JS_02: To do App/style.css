@@ -3,6 +3,9 @@
   margin: 0;
   padding: 0;
 }
+tbody {
+  font-weight: bold;
+}
 h1 {
   text-align: center;
   margin: 3rem;
@@ -14,8 +17,15 @@ h1 {
   animation: appear 0.3s 0.1s both;
 }
 
+.remove {
+  animation: appear 0.3s both reverse;
+}
+
 .show ~ tr {
   animation: move 0.3s both;
+}
+.remove ~ tr {
+  animation: move 0.3s 0.1s both reverse;
 }
 
 th:nth-child(1) {
@@ -29,7 +39,15 @@ td button {
   padding: 0 1rem;
 }
 .completed {
+  font-style: italic;
+  font-weight: 300;
   text-decoration: line-through;
+}
+.tilt-left {
+  animation: tilt-left 0.3s both;
+}
+.tilt-right {
+  animation: tilt-right 0.3s both;
 }
 
 @keyframes appear {
@@ -45,6 +63,22 @@ td button {
 @keyframes move {
   from {
     transform: translateY(-63px);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes tilt-left {
+  from {
+    transform: translateX(-10px);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes tilt-right {
+  from {
+    transform: translateX(10px);
   }
   to {
     transform: none;
