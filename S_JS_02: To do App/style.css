@@ -14,7 +14,7 @@ h1 {
   justify-content: space-between;
 }
 .show {
-  animation: appear 0.3s 0.1s both;
+  animation: appear 0.3s both;
 }
 
 .remove {
@@ -25,7 +25,7 @@ h1 {
   animation: move 0.3s both;
 }
 .remove ~ tr {
-  animation: move 0.3s 0.1s both reverse;
+  animation: move 0.3s both reverse;
 }
 
 th:nth-child(1) {
@@ -37,6 +37,69 @@ th:nth-child(2) {
 td button {
   margin: 0 0.25rem;
   padding: 0 1rem;
+}
+table input {
+  margin: 0;
+}
+tr {
+  position: relative;
+  transition: transform 0.3s;
+}
+button {
+  transition: all 0.3s;
+}
+.save {
+  background-color: #60baaf;
+  color: white;
+  border: none;
+  padding: 0 3rem;
+  transform: translateY(-5rem);
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+  right: 11%;
+}
+.cancel {
+  right: 2%;
+  opacity: 0;
+  transform: translateY(-5rem);
+  z-index: -1;
+  position: absolute;
+  background-color: #ff7946;
+  color: white;
+  border: none;
+  padding: 0 3rem;
+}
+.save:hover {
+  background-color: white;
+  color: #60baaf;
+}
+.cancel:hover {
+  background-color: white;
+  color: #ff7946;
+}
+tr.editable button {
+  transform: translateY(5rem);
+  z-index: -1;
+  opacity: 0;
+}
+tr.editable .save {
+  transform: none;
+
+  z-index: auto;
+  opacity: 1;
+}
+tr.editable .cancel {
+  z-index: auto;
+  transform: none;
+  opacity: 1;
+}
+tr.editable {
+  transform: translateY(-5px);
+}
+tr.editable > td {
+  border-bottom: 1px solid #9b4dca;
+  outline: none;
 }
 .completed {
   font-style: italic;

@@ -59,9 +59,9 @@ function submitHandler(event) {
   event.preventDefault();
   let [title, priority] = extractData(event.target);
   [title, priority] = clean(title, priority);
-  // if (!validate(title, priority)) {
-  //   return alert("Bad Input !!");
-  // }
+  if (!validate(title, priority)) {
+    return alert("Bad Input !!");
+  }
   addTodo(title, priority);
   eraseForm(event.target);
 }
@@ -88,14 +88,48 @@ function createToDoUI(todo) {
   const btns = document.createElement("td");
   const removeBtn = document.createElement("button");
   const toggleBtn = document.createElement("button");
+  const editBtn = document.createElement("button");
+  const saveBtn = document.createElement("button");
+  const cancelBtn = document.createElement("button");
   title.innerText = todo.title;
   priority.innerText = todo.priority;
   removeBtn.innerHTML = `<i class="fa-solid fa-trash fa-xl"></i>`;
   removeBtn.onclick = (e) => removeTodo(todo.id);
   toggleBtn.innerHTML = `<i class="fa-solid fa-square-check fa-xl"></i>`;
   toggleBtn.onclick = (e) => toggleTodo(todo.id);
+  editBtn.innerHTML = `<i class="fa-solid fa-pen-to-square fa-xl"></i>`;
+  editBtn.onclick = (e) => {
+    row.classList.toggle("editable");
+    title.contentEditable = true;
+    priority.contentEditable = true;
+  };
+  saveBtn.classList.add("save");
+  cancelBtn.classList.add("cancel");
+  cancelBtn.onclick = (e) => {
+    row.classList.toggle("editable");
+    title.contentEditable = false;
+    title.innerText = todo.title;
+    priority.contentEditable = false;
+    priority.innerText = todo.priority;
+  };
+  saveBtn.onclick = (e) => {
+    const [newtitle, newpriority] = clean(title.innerText, priority.innerText);
+    if (!validate(newtitle, newpriority)) {
+      return alert("invalid Data");
+    }
+    editTodo(todo.id, newtitle, newpriority);
+    row.classList.toggle("editable");
+    title.contentEditable = false;
+    priority.contentEditable = false;
+  };
+  saveBtn.innerHTML = `<i class="fa-solid fa-check fa-xl"></i>`;
+  cancelBtn.innerHTML = `<i class="fa-solid fa-x fa-xl"></i>`;
+
   btns.appendChild(toggleBtn);
   btns.appendChild(removeBtn);
+  btns.appendChild(editBtn);
+  btns.appendChild(saveBtn);
+  btns.appendChild(cancelBtn);
   row.appendChild(title);
   row.appendChild(priority);
   row.appendChild(btns);
@@ -124,7 +158,7 @@ function render(hint, i, ii) {
 function addTodoUI(index) {
   const newTodo = createToDoUI(todos[index]);
   newTodo.classList.toggle("show");
-  setTimeout(() => newTodo.classList.toggle("show"), 400);
+  setTimeout(() => newTodo.classList.toggle("show"), 300);
   if (index === 0) {
     tableBody.insertAdjacentElement("afterbegin", newTodo);
   } else {
@@ -134,7 +168,7 @@ function addTodoUI(index) {
 function reeditTodoUI(index) {
   const removedTodo = tableBody.children[index];
   removedTodo.classList.add("remove");
-  setTimeout(() => tableBody.removeChild(removedTodo), 400);
+  setTimeout(() => tableBody.removeChild(removedTodo), 300);
 }
 function toggleTodoUI(index) {
   const toggledTodo = tableBody.children[index];
@@ -144,7 +178,7 @@ function toggleTodoUI(index) {
     tilt = "tilt-left";
   }
   toggledTodo.classList.toggle(tilt);
-  setTimeout(() => toggledTodo.classList.toggle(tilt), 400);
+  setTimeout(() => toggledTodo.classList.toggle(tilt), 300);
 }
 function editTodoUIContent(indexInUI, indexInData) {
   tableBody.children[indexInUI].children[0].innerText =
@@ -154,7 +188,6 @@ function editTodoUIContent(indexInUI, indexInData) {
 }
 
 function editTodoUI(i1, i2) {
-  console.log(i1, i2);
   editTodoUIContent(i1, i2);
   if (i1 == i2) {
     return;
@@ -169,7 +202,6 @@ function editTodoUI(i1, i2) {
   const todoUiLoc = tableBody.children[i2];
   tableBody.removeChild(todoUi);
   todoUiLoc.insertAdjacentElement(where, todoUi);
-  console.log(i1 - i2, direction);
   const diff = i1 - i2;
   todoUi.style.setProperty("--diff", diff);
   todoUi.classList.add("moving");
