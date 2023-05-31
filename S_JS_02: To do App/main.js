@@ -1,4 +1,5 @@
 let todos = [];
+const TRANSITION_DURATION = 300;
 
 const makeId = (function () {
   let id = 0;
@@ -52,7 +53,7 @@ function editTodo(id, title, priority) {
   render("move", index1, index2);
 }
 function sortTodos() {
-  todos = todos.sort((a, b) => a.priority > b.priority);
+  todos = todos.sort((a, b) => a.priority - b.priority); // if you used '>' insted of '-' won't work on chrome
 }
 
 function submitHandler(event) {
@@ -158,7 +159,7 @@ function render(hint, i, ii) {
 function addTodoUI(index) {
   const newTodo = createToDoUI(todos[index]);
   newTodo.classList.toggle("show");
-  setTimeout(() => newTodo.classList.toggle("show"), 300);
+  setTimeout(() => newTodo.classList.toggle("show"), TRANSITION_DURATION);
   if (index === 0) {
     tableBody.insertAdjacentElement("afterbegin", newTodo);
   } else {
@@ -168,7 +169,7 @@ function addTodoUI(index) {
 function reeditTodoUI(index) {
   const removedTodo = tableBody.children[index];
   removedTodo.classList.add("remove");
-  setTimeout(() => tableBody.removeChild(removedTodo), 300);
+  setTimeout(() => tableBody.removeChild(removedTodo), TRANSITION_DURATION);
 }
 function toggleTodoUI(index) {
   const toggledTodo = tableBody.children[index];
@@ -178,7 +179,7 @@ function toggleTodoUI(index) {
     tilt = "tilt-left";
   }
   toggledTodo.classList.toggle(tilt);
-  setTimeout(() => toggledTodo.classList.toggle(tilt), 300);
+  setTimeout(() => toggledTodo.classList.toggle(tilt), TRANSITION_DURATION);
 }
 function editTodoUIContent(indexInUI, indexInData) {
   tableBody.children[indexInUI].children[0].innerText =
@@ -219,7 +220,7 @@ function editTodoUI(i1, i2) {
     startEl.classList.remove("start");
     endEl.classList.remove("end");
     todoUi.style.removeProperty("--diff", diff);
-  }, 300);
+  }, TRANSITION_DURATION);
 }
 
 const form = document.querySelector("form");

@@ -1,3 +1,6 @@
+:root {
+  --transition-duration: 0.3s;
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -14,18 +17,18 @@ h1 {
   justify-content: space-between;
 }
 .show {
-  animation: appear 0.3s both;
+  animation: appear var(--transition-duration);
 }
 
 .remove {
-  animation: appear 0.3s both reverse;
+  animation: appear var(--transition-duration) reverse;
 }
 
 .show ~ tr {
-  animation: move 0.3s both;
+  animation: move var(--transition-duration);
 }
 .remove ~ tr {
-  animation: move 0.3s both reverse;
+  animation: move var(--transition-duration) reverse;
 }
 
 th:nth-child(1) {
@@ -43,27 +46,27 @@ table input {
 }
 tr {
   position: relative;
-  transition: transform 0.3s;
+  /* transition: transform var(--transition-duration); */
 }
 button {
-  transition: all 0.3s;
+  transition: all var(--transition-duration);
 }
 .save {
   background-color: #60baaf;
   color: white;
   border: none;
   padding: 0 3rem;
-  transform: translateY(-5rem);
+  transform: translateY(-5rem) scale(0);
   position: absolute;
-  z-index: -1;
+
   opacity: 0;
   right: 11%;
 }
 .cancel {
   right: 2%;
   opacity: 0;
-  transform: translateY(-5rem);
-  z-index: -1;
+  transform: translateY(-5rem) scale(0);
+
   position: absolute;
   background-color: #ff7946;
   color: white;
@@ -79,18 +82,15 @@ button {
   color: #ff7946;
 }
 tr.editable button {
-  transform: translateY(5rem);
-  z-index: -1;
+  transform: translateY(5rem) scale(0);
   opacity: 0;
 }
 tr.editable .save {
   transform: none;
 
-  z-index: auto;
   opacity: 1;
 }
 tr.editable .cancel {
-  z-index: auto;
   transform: none;
   opacity: 1;
 }
@@ -107,23 +107,23 @@ tr.editable > td {
   text-decoration: line-through;
 }
 .tilt-left {
-  animation: tilt-left 0.3s both;
+  animation: tilt-left var(--transition-duration);
 }
 .tilt-right {
-  animation: tilt-right 0.3s both;
+  animation: tilt-right var(--transition-duration);
 }
 
 .moving {
-  animation: move 0.3s both;
+  animation: move var(--transition-duration) both;
 }
 
 .start,
 .start ~ tr:not(.end ~ tr) {
-  animation: move 0.3s both;
+  animation: move var(--transition-duration) both;
 }
 .end,
 .end ~ tr:not(.start ~ tr) {
-  animation: move2 0.3s both;
+  animation: move2 var(--transition-duration) both;
 }
 @keyframes move2 {
   from {
@@ -153,18 +153,22 @@ tr.editable > td {
   }
 }
 @keyframes tilt-left {
-  from {
+  0% {
+  }
+  50% {
     transform: translateX(-10px);
   }
-  to {
+  100% {
     transform: none;
   }
 }
 @keyframes tilt-right {
-  from {
+  0% {
+  }
+  50% {
     transform: translateX(10px);
   }
-  to {
+  100% {
     transform: none;
   }
 }
