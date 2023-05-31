@@ -10,6 +10,14 @@ h1 {
 .row {
   justify-content: space-between;
 }
+.show {
+  animation: appear 0.3s 0.1s both;
+}
+
+.show ~ tr {
+  animation: move 0.3s both;
+}
+
 th:nth-child(1) {
   width: 65%;
 }
@@ -22,4 +30,23 @@ td button {
 }
 .completed {
   text-decoration: line-through;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+@keyframes move {
+  from {
+    transform: translateY(-63px);
+  }
+  to {
+    transform: none;
+  }
 }

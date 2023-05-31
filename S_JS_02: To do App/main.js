@@ -6,21 +6,35 @@ const makeId = (function () {
 })();
 
 function addTodo(title, priority) {
-  todos = [{ id: makeId(), title, priority, completed: false }, ...todos];
+  const newTodo = { id: makeId(), title, priority, completed: false };
+  todos = [newTodo, ...todos];
   sortTodos();
-  render();
+  const index = todos.indexOf(newTodo);
+  render("add", index);
 }
 
 function removeTodo(id) {
-  todos = todos.filter((todo) => id != todo.id);
-  render();
+  let index;
+  todos = todos.filter((todo, i) => {
+    if (id == todo.id) {
+      index = i;
+    }
+    return id != todo.id;
+  });
+  render("remove", index);
 }
 
 function toggleTodo(id) {
-  todos = todos.map((todo) =>
-    todo.id != id ? todo : Object.assign(todo, { completed: !todo.completed })
-  );
-  render();
+  let index;
+  todos = todos.map((todo, i) => {
+    if (todo.id == id) {
+      index = i;
+    }
+    return todo.id != id
+      ? todo
+      : Object.assign(todo, { completed: !todo.completed });
+  });
+  render("toggle", index);
 }
 function sortTodos() {
   todos = todos.sort((a, b) => a.priority <= b.priority);
@@ -76,13 +90,29 @@ function createToDoUI(todo) {
   return row;
 }
 
-function render() {
-  const tableBody = document.querySelector("tbody");
+const tableBody = document.querySelector("tbody");
+function render(hint, i) {
+  if (hint == "add") {
+    return addTodoUI(i);
+  }
+  console.log(hint, i);
   tableBody.innerHTML = "";
   const fragment = document.createDocumentFragment();
   todos.forEach((todo) => fragment.appendChild(createToDoUI(todo)));
   tableBody.appendChild(fragment);
 }
+
+function addTodoUI(index) {
+  const newTodo = createToDoUI(todos[index]);
+  newTodo.classList.toggle("show");
+  setTimeout(() => newTodo.classList.toggle("show"), 4000);
+  if (index === 0) {
+    tableBody.insertAdjacentElement("afterbegin", newTodo);
+  } else {
+    tableBody.children[index - 1].insertAdjacentElement("afterend", newTodo);
+  }
+}
+
 const form = document.querySelector("form");
 form.onsubmit = submitHandler;
 render();
