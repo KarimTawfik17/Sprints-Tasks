@@ -1,65 +1,24 @@
-const makeId = (function () {
-  let id = 0;
-  return () => id++;
-})();
-let todos = [
-  { id: makeId(), title: "study cs", priority: 7, completed: false },
-  { id: makeId(), title: "play sports", priority: 3, completed: false },
-  { id: makeId(), title: "go shopping", priority: 4, completed: true },
-  { id: makeId(), title: "play ps", priority: 5, completed: true },
-  { id: makeId(), title: "be active", priority: 1, completed: false },
-];
-sortTodos();
+import { TodosList } from "../TodosList.mjs";
+let todos = new TodosList();
 const TRANSITION_DURATION = 300;
 
 function addTodo(title, priority) {
-  const newTodo = { id: makeId(), title, priority, completed: false };
-  todos = [newTodo, ...todos];
-  sortTodos();
-  const index = todos.indexOf(newTodo);
+  const index = todos.addTodo(title, priority);
   render("add", index);
 }
 
 function removeTodo(id) {
-  let index;
-  todos = todos.filter((todo, i) => {
-    if (id == todo.id) {
-      index = i;
-    }
-    return id != todo.id;
-  });
+  const index = todos.removeTodo(id);
   render("remove", index);
 }
 
 function toggleTodo(id) {
-  let index;
-  todos = todos.map((todo, i) => {
-    if (todo.id == id) {
-      index = i;
-    }
-    return todo.id != id
-      ? todo
-      : Object.assign(todo, { completed: !todo.completed });
-  });
+  const index = todos.toggleTodo(id);
   render("toggle", index);
 }
 function editTodo(id, title, priority) {
-  let index1;
-  let index2;
-  const editedTodo = { id, title, priority };
-  todos = todos.map((todo, i) => {
-    if (todo.id == id) {
-      index1 = i;
-      return editedTodo;
-    }
-    return todo;
-  });
-  sortTodos();
-  index2 = todos.indexOf(editedTodo);
+  const [index1, index2] = todos.editTodo(id, title, priority);
   render("move", index1, index2);
-}
-function sortTodos() {
-  todos = todos.sort((a, b) => a.priority - b.priority); // if you used '>' insted of '-' won't work on chrome
 }
 
 function submitHandler(event) {
@@ -166,11 +125,11 @@ function render(hint, i, ii) {
     return editTodoUI(i, ii);
   }
   tableBody.innerHTML = "";
-  todos.forEach((todo) => tableBody.appendChild(createToDoUI(todo)));
+  todos.todos.forEach((todo) => tableBody.appendChild(createToDoUI(todo)));
 }
 
 function addTodoUI(index) {
-  const newTodo = createToDoUI(todos[index]);
+  const newTodo = createToDoUI(todos.todos[index]);
   newTodo.classList.toggle("show");
   setTimeout(() => newTodo.classList.toggle("show"), TRANSITION_DURATION);
   if (index === 0) {
@@ -188,7 +147,7 @@ function toggleTodoUI(index) {
   const toggledTodo = tableBody.children[index];
   toggledTodo.classList.toggle("completed");
   let tilt = "tilt-right";
-  if (todos[index].completed) {
+  if (todos.todos[index].completed) {
     tilt = "tilt-left";
   }
   toggledTodo.classList.toggle(tilt);
@@ -196,9 +155,9 @@ function toggleTodoUI(index) {
 }
 function editTodoUIContent(indexInUI, indexInData) {
   tableBody.children[indexInUI].children[0].innerText =
-    todos[indexInData].title;
+    todos.todos[indexInData].title;
   tableBody.children[indexInUI].children[1].innerText =
-    todos[indexInData].priority;
+    todos.todos[indexInData].priority;
 }
 
 function editTodoUI(i1, i2) {
@@ -241,7 +200,7 @@ form.onsubmit = submitHandler;
 const deleteSelected = document.querySelector(".delete-selected");
 deleteSelected.onclick = () => {
   document.querySelectorAll(".selected").forEach((row) => {
-    todos = todos.filter((todo) => {
+    todos.todos = todos.todos.filter((todo) => {
       return row.dataset.id != todo.id;
     });
   });

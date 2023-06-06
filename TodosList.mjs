@@ -7,6 +7,7 @@ export class TodosList {
     data = data || dummy_todos;
     this.todos = data.map((el) => new Todo(el));
     this.sortTodos();
+    console.log("creation : ", this.todos);
   }
 
   sortTodos() {
@@ -18,7 +19,8 @@ export class TodosList {
     this.todos = [newTodo, ...this.todos];
     this.sortTodos();
     const index = this.todos.indexOf(newTodo);
-    // render("add", index);
+    // console.log("addition : ", this.todos);
+    return index;
   }
   removeTodo(id) {
     let index;
@@ -28,7 +30,8 @@ export class TodosList {
       }
       return id != todo.id;
     });
-    // render("remove", index);
+    // console.log("removing : ", this.todos);
+    return index;
   }
   toggleTodo(id) {
     let index;
@@ -40,7 +43,8 @@ export class TodosList {
         ? todo
         : Object.assign(todo, { completed: !todo.completed });
     });
-    // render("toggle", index);
+    // console.log("toggling : ", this.todos);
+    return index;
   }
   editTodo(id, title, priority) {
     let index1;
@@ -55,17 +59,18 @@ export class TodosList {
     });
     this.sortTodos();
     index2 = this.todos.indexOf(editedTodo);
-    // render("move", index1, index2);
+    // console.log("editing : ", this.todos);
+    return [index1, index2];
   }
 }
 
-const todos = new TodosList();
-console.log(todos);
-todos.addTodo("Karim", -100);
-console.log(todos);
-todos.toggleTodo(5);
-console.log(todos);
-todos.toggleTodo(5);
-console.log(todos);
-todos.editTodo(5, "karim tawfik", 70);
-console.log(todos);
+// const todos = new TodosList();
+// console.log(todos);
+// todos.addTodo("Karim", -100);
+// console.log(todos);
+// todos.toggleTodo(5);
+// console.log(todos);
+// todos.toggleTodo(5);
+// console.log(todos);
+// todos.editTodo(5, "karim tawfik", 70);
+// console.log(todos);
