@@ -48,7 +48,8 @@ tr {
   position: relative;
   /* transition: transform var(--transition-duration); */
 }
-button {
+tr button,
+tr input {
   transition: all var(--transition-duration);
 }
 .save {
@@ -81,7 +82,8 @@ button {
   background-color: white;
   color: #ff7946;
 }
-tr.editable button {
+tr.editable button,
+tr.editable input {
   transform: translateY(5rem) scale(0);
   opacity: 0;
 }
@@ -105,6 +107,15 @@ tr.editable > td {
   font-style: italic;
   font-weight: 300;
   text-decoration: line-through;
+}
+
+.delete-selected {
+  margin: 3rem auto;
+  display: block;
+}
+
+td input {
+  margin-left: 2rem;
 }
 .tilt-left {
   animation: tilt-left var(--transition-duration);

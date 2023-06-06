@@ -1,10 +1,16 @@
-let todos = [];
-const TRANSITION_DURATION = 300;
-
 const makeId = (function () {
   let id = 0;
   return () => id++;
 })();
+let todos = [
+  { id: makeId(), title: "study cs", priority: 7, completed: false },
+  { id: makeId(), title: "play sports", priority: 3, completed: false },
+  { id: makeId(), title: "go shopping", priority: 4, completed: true },
+  { id: makeId(), title: "play ps", priority: 5, completed: true },
+  { id: makeId(), title: "be active", priority: 1, completed: false },
+];
+sortTodos();
+const TRANSITION_DURATION = 300;
 
 function addTodo(title, priority) {
   const newTodo = { id: makeId(), title, priority, completed: false };
@@ -84,6 +90,7 @@ function eraseForm(form) {
 }
 function createToDoUI(todo) {
   const row = document.createElement("tr");
+  row.dataset.id = todo.id;
   const title = document.createElement("td");
   const priority = document.createElement("td");
   const btns = document.createElement("td");
@@ -92,6 +99,9 @@ function createToDoUI(todo) {
   const editBtn = document.createElement("button");
   const saveBtn = document.createElement("button");
   const cancelBtn = document.createElement("button");
+  const select = document.createElement("input");
+  select.type = "checkbox";
+  select.onchange = () => row.classList.toggle("selected");
   title.innerText = todo.title;
   priority.innerText = todo.priority;
   removeBtn.innerHTML = `<i class="fa-solid fa-trash fa-xl"></i>`;
@@ -131,6 +141,7 @@ function createToDoUI(todo) {
   btns.appendChild(editBtn);
   btns.appendChild(saveBtn);
   btns.appendChild(cancelBtn);
+  btns.appendChild(select);
   row.appendChild(title);
   row.appendChild(priority);
   row.appendChild(btns);
@@ -154,6 +165,8 @@ function render(hint, i, ii) {
   if (hint == "move") {
     return editTodoUI(i, ii);
   }
+  tableBody.innerHTML = "";
+  todos.forEach((todo) => tableBody.appendChild(createToDoUI(todo)));
 }
 
 function addTodoUI(index) {
@@ -225,4 +238,14 @@ function editTodoUI(i1, i2) {
 
 const form = document.querySelector("form");
 form.onsubmit = submitHandler;
+const deleteSelected = document.querySelector(".delete-selected");
+deleteSelected.onclick = () => {
+  document.querySelectorAll(".selected").forEach((row) => {
+    todos = todos.filter((todo) => {
+      return row.dataset.id != todo.id;
+    });
+  });
+  render();
+};
+
 render();
