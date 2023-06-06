@@ -1,4 +1,4 @@
-import { TodosList } from "../TodosList.mjs";
+import { TodosList } from "./TodosList.mjs";
 let todos = new TodosList();
 const TRANSITION_DURATION = 300;
 
