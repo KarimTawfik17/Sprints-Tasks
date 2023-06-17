@@ -2,9 +2,11 @@ require("dotenv").config();
 const http = require("http");
 const PORT_NUM = process.env.PORT_NUM || 3000;
 const server = http.createServer((req, res) => {
-  console.log(req.method, req.url);
+  console.log("recieved a new request :", req.method, req.url);
   res.statusCode = 501;
-  res.write("Not Implemented Yet !");
+  res.write("Only two routes available now : \n");
+  res.write("GET /products?CUR=<currency_code> !\n");
+  res.write("POST /products !\n");
   res.end();
 });
 server.listen(PORT_NUM, () => {
