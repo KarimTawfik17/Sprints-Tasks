@@ -57,6 +57,5 @@ module.exports = {
   getProducts,
   categorize,
   transformProductsPrice,
-  getRate,
   addProduct,
 };
