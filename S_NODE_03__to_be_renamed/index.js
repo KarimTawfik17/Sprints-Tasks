@@ -20,16 +20,16 @@ function categorize(products) {
   );
 }
 
-async function getRate() {
-  const api = `https://api.currencyapi.com/v3/latest?apikey=${API_KEY}&currencies=EGP`;
+async function getRate(currency) {
+  const api = `https://api.currencyapi.com/v3/latest?apikey=${API_KEY}&currencies=${currency}`;
   const rate = await fetch(api)
     .then((Response) => Response.json())
-    .then((json) => +json.data.EGP.value);
+    .then((json) => +json.data[currency].value);
   return rate;
 }
-
-async function transformProductsPrice(categories) {
-  const rate = await getRate();
+// getRate("EUR").then(console.log);
+async function transformProductsPrice(categories, currency = "EGP") {
+  const rate = await getRate(currency);
   return categories.map((category) => ({
     ...category,
     products: category.products.map((product) => ({
