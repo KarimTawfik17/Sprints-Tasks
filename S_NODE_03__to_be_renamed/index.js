@@ -39,9 +39,24 @@ async function transformProductsPrice(categories) {
   }));
 }
 
+async function addProduct(product) {
+  const api = "https://api.escuelajs.co/api/v1/products/";
+  return fetch(api, {
+    method: "POST",
+    headers: new Headers({ "content-type": "application/json" }),
+    body: JSON.stringify(product),
+  }).then((res) => res.json());
+}
+
 // getProducts()
 //   .then(categorize)
 //   .then(transformProductsPrice)
 //   .then((data) => console.log(JSON.stringify(data, null, 2)));
 
-module.exports = { getProducts, categorize, transformProductsPrice, getRate };
+module.exports = {
+  getProducts,
+  categorize,
+  transformProductsPrice,
+  getRate,
+  addProduct,
+};

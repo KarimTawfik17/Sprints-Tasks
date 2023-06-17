@@ -1,6 +1,7 @@
 const {
   getProducts,
   categorize,
+  addProduct,
   getRate,
   transformProductsPrice,
 } = require("./index.js");
@@ -23,9 +24,18 @@ const server = http.createServer((req, res) => {
 
     // show product with price here
   } else if (req.method == "POST" && reqPath[1] == "products") {
-    console.log("Second Case");
-
-    // add new product
+    let body = "";
+    let product = {};
+    req.on("data", (chunk) => (body += chunk));
+    req.on("end", () => {
+      res.statusCode = 200;
+      res.setHeader("Content-Type", "application/json");
+      product = JSON.parse(body);
+      addProduct(product).then((data) => {
+        res.write(JSON.stringify(data));
+        res.end();
+      });
+    });
   } else {
     res.statusCode = 501;
     res.write("Only two routes available now : \n");
