@@ -39,7 +39,9 @@ async function transformProductsPrice(categories) {
   }));
 }
 
-getProducts()
-  .then(categorize)
-  .then(transformProductsPrice)
-  .then((data) => console.log(JSON.stringify(data, null, 2)));
+// getProducts()
+//   .then(categorize)
+//   .then(transformProductsPrice)
+//   .then((data) => console.log(JSON.stringify(data, null, 2)));
+
+module.exports = { getProducts, categorize, transformProductsPrice, getRate };
