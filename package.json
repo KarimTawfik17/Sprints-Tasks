@@ -1,9 +1,10 @@
 {
+  "main": "S_NODE_03: Build server with 2 endpoint get-post/server.js",
   "scripts": {
-    "dev": "nodemon S_NODE_03__to_be_renamed/server.js"
+    "dev": "nodemon"
   },
   "dependencies": {
-    "dotenv": "^16.1.4"
+    "dotenv": "^16.3.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"
