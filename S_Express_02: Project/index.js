@@ -23,6 +23,7 @@ const {
 const allProductsInCategoryHandler = require("./routes/allProductsInCategory");
 const registerHandler = require("./routes/register");
 const loginHandler = require("./routes/login");
+const authenticated = require("./routes/authenticatedMiddleware");
 
 const app = express();
 app.use(express.json());
@@ -38,6 +39,7 @@ app.get("/product/:id", getProductHandler); // get one product
 
 app.post(
   "/products",
+  authenticated,
   newProductValidator,
   categoryExistValidator,
   addProductHandler
@@ -45,23 +47,36 @@ app.post(
 
 app.put(
   "/product/:id",
+  authenticated,
   updateProductValidator,
   categoryExistValidator,
   updateProductHandler
 ); // update product
 
-app.delete("/product/:id", deleteProductHandler); // delete product
+app.delete("/product/:id", authenticated, deleteProductHandler); // delete product
 
 //categories routes
 app.get("/categories", allCategoriesHandler); // get all categories
 
 app.get("/category/:id", getCategoryHandler); // get one category
 
-app.post("/categories", newCategoryValidator, addCategoryHandler); // add category
+app.post(
+  "/categories",
+  authenticated,
 
-app.put("/category/:id", updateCategoryValidator, updateCategoryHandler); // update category
+  newCategoryValidator,
+  addCategoryHandler
+); // add category
 
-app.delete("/category/:id", deleteCategoryHandler); // delete category
+app.put(
+  "/category/:id",
+  authenticated,
+
+  updateCategoryValidator,
+  updateCategoryHandler
+); // update category
+
+app.delete("/category/:id", authenticated, deleteCategoryHandler); // delete category
 
 app.get("/categories/:id/products", allProductsInCategoryHandler); // get all products in the category
 
