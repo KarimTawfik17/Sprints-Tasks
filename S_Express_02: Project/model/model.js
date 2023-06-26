@@ -61,13 +61,11 @@ function updateCategory(id, modifiedData) {
 }
 function createUser(user) {
   users.push(user);
-  console.log("all users now : ", users);
 }
 function loginUser(email, password) {
   const user = users.find(
     (user) => user.email == email && user.password == password
   );
-  console.log("user : ", user);
   if (!user) return false;
   return user;
 }
@@ -85,6 +83,3 @@ module.exports = {
   createUser,
   loginUser,
 };
-
-// console.log(addCategory({ name: "karim", image: "http" }));
-// console.log(getCategory(2));
