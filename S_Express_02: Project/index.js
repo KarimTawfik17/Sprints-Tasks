@@ -21,6 +21,8 @@ const {
   userLoginValidator,
 } = require("./helpers/validator");
 const allProductsInCategoryHandler = require("./routes/allProductsInCategory");
+const registerHandler = require("./routes/register");
+const loginHandler = require("./routes/login");
 
 const app = express();
 app.use(express.json());
@@ -65,5 +67,5 @@ app.get("/categories/:id/products", allProductsInCategoryHandler); // get all pr
 
 // users
 
-app.post("/register", userSignupValidator, (req, res) => res.send("test"));
-app.post("/login", userLoginValidator, (req, res) => res.send("test"));
+app.post("/register", userSignupValidator, registerHandler);
+app.post("/login", userLoginValidator, loginHandler);

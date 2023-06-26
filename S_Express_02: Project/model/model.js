@@ -1,5 +1,5 @@
 const normalizer = require("../helpers/normalizer");
-const { products, categories } = require("./db");
+const { products, categories, users } = require("./db");
 function getAllProducts() {
   return products;
 }
@@ -59,6 +59,18 @@ function updateCategory(id, modifiedData) {
   );
   return category;
 }
+function createUser(user) {
+  users.push(user);
+  console.log("all users now : ", users);
+}
+function loginUser(email, password) {
+  const user = users.find(
+    (user) => user.email == email && user.password == password
+  );
+  console.log("user : ", user);
+  if (!user) return false;
+  return user;
+}
 module.exports = {
   getAllProducts,
   getProduct,
@@ -70,6 +82,8 @@ module.exports = {
   addCategory,
   deleteCategory,
   updateCategory,
+  createUser,
+  loginUser,
 };
 
 // console.log(addCategory({ name: "karim", image: "http" }));

@@ -93,4 +93,5 @@ module.exports = {
       updatedAt: "2023-06-26T17:11:35.000Z",
     },
   ],
+  users: [],
 };
