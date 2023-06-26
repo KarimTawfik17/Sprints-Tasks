@@ -2,7 +2,7 @@
   "name": "sprints-tasks",
   "version": "1.0.0",
   "description": "",
-  "main": "S_Express_01: Write a CRUD for products/index.js",
+  "main": "S_Express_02: Project/index.js",
   "scripts": {
     "dev": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
