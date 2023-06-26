@@ -2,11 +2,11 @@ const getId = (() => {
   id = 1;
   return () => id++;
 })();
-function normalizer(product) {
-  console.log("product to be normalized :", product);
-  product.id = product.id || getId();
-  product.creationAt = product.creationAt || new Date().toISOString();
-  product.updatedAt = new Date().toISOString();
-  console.log("product  normalized :", product);
+function normalizer(item) {
+  // console.log("item to be normalized :", item);
+  item.id = item.id || getId();
+  item.creationAt = item.creationAt || new Date().toISOString();
+  item.updatedAt = new Date().toISOString();
+  // console.log("item  normalized :", item);
 }
 module.exports = normalizer;
