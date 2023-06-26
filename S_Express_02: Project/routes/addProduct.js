@@ -2,7 +2,7 @@ const { addProduct } = require("../model/model.js");
 
 function addProductHandler(req, res) {
   const product = req.body;
-  addProduct(product);
-  res.json(product);
+  const createdProduct = addProduct(product);
+  res.json(createdProduct);
 }
 module.exports = addProductHandler;
