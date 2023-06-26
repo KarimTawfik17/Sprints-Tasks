@@ -1,11 +1,30 @@
 const Joi = require("joi");
+const { joiPasswordExtendCore } = require("joi-password");
+const JoiPassword = Joi.extend(joiPasswordExtendCore);
+
 const { getCategory } = require("../model/model.js");
+
 const newProductSchema = Joi.object({
   title: Joi.string().min(1).required(),
   price: Joi.number().integer().min(1).required(),
   description: Joi.string().min(1).required(),
   categoryId: Joi.number().integer().min(1).required(),
   images: Joi.array().allow(Joi.string()).min(1).required(),
+});
+const userLoginSchema = Joi.object({
+  email: Joi.string()
+    .email({ tlds: { allow: false } })
+    .required(),
+  password: JoiPassword.string()
+    .min(8)
+    .max(8)
+    .minOfSpecialCharacters(1)
+    .minOfLowercase(1)
+    .minOfUppercase(1)
+    .minOfNumeric(1)
+    .noWhiteSpaces()
+    .required(),
+  passwordRepeat: Joi.any(),
 });
 const updateProductSchema = Joi.object({
   title: Joi.string().min(1),
@@ -73,10 +92,34 @@ function updateCategoryValidator(req, res, next) {
   }
 }
 
+function userSignupValidator(req, res, next) {
+  const user = req.body;
+  const { value, error } = userLoginSchema.validate(user);
+  if (error) {
+    res.status(400).send(error.message);
+  } else if (user.passwordRepeat !== user.password) {
+    res
+      .status(400)
+      .send(`"passwordRepeat" is required to be same as "password"`);
+  } else {
+    next();
+  }
+}
+function userLoginValidator(req, res, next) {
+  const user = req.body;
+  const { value, error } = userLoginSchema.validate(user);
+  if (error) {
+    res.status(400).send(error.message);
+  } else {
+    next();
+  }
+}
 module.exports = {
   newProductValidator,
   updateProductValidator,
   newCategoryValidator,
   updateCategoryValidator,
   categoryExistValidator,
+  userLoginValidator,
+  userSignupValidator,
 };

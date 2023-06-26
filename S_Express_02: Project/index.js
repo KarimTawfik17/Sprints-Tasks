@@ -17,6 +17,8 @@ const {
   newCategoryValidator,
   updateCategoryValidator,
   categoryExistValidator,
+  userSignupValidator,
+  userLoginValidator,
 } = require("./helpers/validator");
 const allProductsInCategoryHandler = require("./routes/allProductsInCategory");
 
@@ -60,3 +62,8 @@ app.put("/category/:id", updateCategoryValidator, updateCategoryHandler); // upd
 app.delete("/category/:id", deleteCategoryHandler); // delete category
 
 app.get("/categories/:id/products", allProductsInCategoryHandler); // get all products in the category
+
+// users
+
+app.post("/register", userSignupValidator, (req, res) => res.send("test"));
+app.post("/login", userLoginValidator, (req, res) => res.send("test"));
