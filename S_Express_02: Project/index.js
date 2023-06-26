@@ -16,7 +16,9 @@ const {
   updateProductValidator,
   newCategoryValidator,
   updateCategoryValidator,
+  categoryExistValidator,
 } = require("./helpers/validator");
+const allProductsInCategoryHandler = require("./routes/allProductsInCategory");
 
 const app = express();
 app.use(express.json());
@@ -30,9 +32,19 @@ app.get("/products", allProductsHandler); // get all products
 
 app.get("/product/:id", getProductHandler); // get one product
 
-app.post("/products", newProductValidator, addProductHandler); // add product
+app.post(
+  "/products",
+  newProductValidator,
+  categoryExistValidator,
+  addProductHandler
+); // add product
 
-app.put("/product/:id", updateProductValidator, updateProductHandler); // update product
+app.put(
+  "/product/:id",
+  updateProductValidator,
+  categoryExistValidator,
+  updateProductHandler
+); // update product
 
 app.delete("/product/:id", deleteProductHandler); // delete product
 
@@ -46,3 +58,5 @@ app.post("/categories", newCategoryValidator, addCategoryHandler); // add catego
 app.put("/category/:id", updateCategoryValidator, updateCategoryHandler); // update category
 
 app.delete("/category/:id", deleteCategoryHandler); // delete category
+
+app.get("/categories/:id/products", allProductsInCategoryHandler); // get all products in the category

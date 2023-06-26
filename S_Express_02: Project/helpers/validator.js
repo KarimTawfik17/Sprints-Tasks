@@ -1,9 +1,10 @@
 const Joi = require("joi");
+const { getCategory } = require("../model/model.js");
 const newProductSchema = Joi.object({
   title: Joi.string().min(1).required(),
   price: Joi.number().integer().min(1).required(),
   description: Joi.string().min(1).required(),
-  categoryId: Joi.number().integer().min(1),
+  categoryId: Joi.number().integer().min(1).required(),
   images: Joi.array().allow(Joi.string()).min(1).required(),
 });
 const updateProductSchema = Joi.object({
@@ -27,6 +28,19 @@ function newProductValidator(req, res, next) {
   const { value, error } = newProductSchema.validate(product);
   if (error) {
     res.status(400).send(error.message);
+  } else {
+    next();
+  }
+}
+function categoryExistValidator(req, res, next) {
+  const { categoryId } = req.body;
+  if (!categoryId) {
+    return next(); // no categoryId then this request is update or it will be failed already
+  }
+  if (!getCategory(categoryId)) {
+    res
+      .status(400)
+      .send(`Ther's no category with the id: ${categoryId}, create one first`);
   } else {
     next();
   }
@@ -64,4 +78,5 @@ module.exports = {
   updateProductValidator,
   newCategoryValidator,
   updateCategoryValidator,
+  categoryExistValidator,
 };
