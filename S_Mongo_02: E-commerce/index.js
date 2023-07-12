@@ -4,7 +4,8 @@ const userRouter = require("./routes/user");
 const productRouter = require("./routes/product");
 const app = express();
 const port = process.env.PORT || 3000;
-
+const mongoose = require("mongoose");
+mongoose.connect(process.env.CONNECTION_STRING);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/user", userRouter);
