@@ -26,4 +26,31 @@ router.post("/", (req, res) => {
     });
 });
 
+router.post("/:id/product/:productId", async (req, res) => {
+  const userId = req.params.id;
+  const productId = req.params.productId;
+  User.findByIdAndUpdate(userId, { $addToSet: { cart: productId } })
+    .then((result) => {
+      res.send(result);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.send("Error adding product to cart");
+    });
+});
+
+//   try {
+//     user = await User.findById(userId);
+//   } catch (error) {
+//     console.log(error);
+//     return res.send("Error finding user");
+//   }
+//   try {
+//     user.update({ $addToSet: { cart: productId } });
+//     res.send(result);
+//   } catch (error) {
+//     console.log(error);
+//     res.send("Error adding product to cart");
+//   }
+// });
 module.exports = router;
