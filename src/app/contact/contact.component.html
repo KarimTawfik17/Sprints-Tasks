@@ -2,9 +2,13 @@
   <div class="row g-0">
     <div class="col-9 col-md-11">
       <div class="card-body">
-        <h5 class="card-title">Person Name</h5>
+        <h5 class="card-title" [contentEditable]="editMode">
+          {{ contact.name }}
+        </h5>
         <p class="card-text">
-          <small class="text-body-secondary">Person Number</small>
+          <small class="text-body-secondary" [contentEditable]="editMode">{{
+            contact.phone
+          }}</small>
         </p>
       </div>
     </div>
@@ -17,10 +21,19 @@
     </div>
   </div>
   <div class="row">
-    <!-- edit and delete buttons -->
     <div class="col-12 d-flex justify-content-center">
-      <button class="btn btn-outline-primary me-2">Edit</button>
-      <button class="btn btn-outline-danger">Delete</button>
+      <button
+        class="btn btn-outline-primary me-2"
+        (click)="editMode = !editMode"
+      >
+        {{ editMode ? "Save" : "Edit" }}
+      </button>
+      <button
+        class="btn btn-outline-danger"
+        (click)="contactsService.deleteContact(contact.id)"
+      >
+        Delete
+      </button>
     </div>
   </div>
 </div>

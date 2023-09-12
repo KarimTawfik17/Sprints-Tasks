@@ -1,12 +1,24 @@
 <div class="card p-3 mb-5">
-  <form class="row justify-content-center">
+  <form class="row justify-content-center" (submit)="onSubmit($event)">
     <div class="mb-3">
       <label for="name" class="form-label">Name :</label>
-      <input type="text" class="form-control" id="name" />
+      <input
+        [(ngModel)]="name"
+        name="name"
+        type="text"
+        class="form-control"
+        id="name"
+      />
     </div>
     <div class="mb-3">
       <label for="mobile" class="form-label">Mobile Number :</label>
-      <input type="tel" class="form-control" id="mobile" />
+      <input
+        [(ngModel)]="phone"
+        name="phone"
+        type="tel"
+        class="form-control"
+        id="mobile"
+      />
     </div>
 
     <button type="submit" class="btn btn-primary col-6 col-md-2">Submit</button>
