@@ -1,7 +1,8 @@
 <div class="container-lg p-3">
   <app-new-contact></app-new-contact>
+  <app-search></app-search>
   <app-contact
-    *ngFor="let contact of contactsService.contacts"
+    *ngFor="let contact of contactsService.shownContacts"
     [contact]="contact"
   ></app-contact>
 </div>

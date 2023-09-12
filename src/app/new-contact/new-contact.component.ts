@@ -17,5 +17,7 @@ export class NewContactComponent {
     e.preventDefault();
     console.log('submit', this.name, this.phone);
     this.contactsService.addContact(this.name, this.phone);
+    this.name = '';
+    this.phone = '';
   }
 }
