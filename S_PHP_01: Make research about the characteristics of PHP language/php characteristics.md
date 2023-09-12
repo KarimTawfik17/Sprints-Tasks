@@ -1,4 +1,5 @@
 #Variables
+
 In PHP, variable names are case-sensitive. This means that PHP treats variable names with different letter casing (e.g., uppercase and lowercase letters) as distinct and separate variables. Here are some key points to understand about case sensitivity with variables in PHP:
 
 1. Variable names: PHP allows you to use a combination of letters, numbers, and underscores (\_) to create variable names. Variable names must start with a letter or an underscore, followed by letters, numbers, or underscores.
@@ -37,6 +38,7 @@ In the above example, `$globalVar` and `$globalvar` are two different variables 
 In summary, PHP treats variable names as case-sensitive, meaning that it distinguishes between variables with different letter casing. It's a good practice to follow naming conventions like camelCase to make your code more readable and to avoid potential naming conflicts.
 
 #Functions
+
 In PHP, function names are not case-sensitive on most platforms. This means that you can call functions using different letter casings (e.g., uppercase and lowercase letters), and PHP will still recognize them as the same function. However, it's important to note that this behavior can vary depending on the operating system and configuration.
 
 Here's a basic example to illustrate case insensitivity with function names in PHP:
@@ -60,7 +62,9 @@ However, it's important to be aware of the following:
 3. Code readability and conventions: Even though PHP allows case-insensitive function names, it's still a good practice to follow naming conventions consistently. Most PHP developers use "camelCase" or "snake_case" for function names, depending on their coding style, to enhance code readability.
 
 In summary, while PHP generally treats function names as case-insensitive, it's best to use the correct letter casing for function names to ensure your code is more readable and portable across different environments.
+
 #Reserved words
+
 Reserved words in PHP, also known as keywords, are words that have a special meaning and are reserved for specific purposes within the PHP language. These words cannot be used as identifiers for variables, functions, classes, or other user-defined elements in your PHP code. Here's a short overview of some of the reserved words in PHP:
 
 1. **Basic Keywords**:
